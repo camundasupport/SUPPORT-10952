@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="_DdZocL47EeOQo_IRkjDF6w" targetNamespace="http://camunda.org/schema/1.0/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:process id="loanApproval-new" name="Loan Approval-new" isExecutable="true">
+    <bpmn2:endEvent id="EndEvent_1" name="Loan Approved">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" name="" sourceRef="ServiceTask_1" targetRef="EndEvent_1" />
+    <bpmn2:sequenceFlow id="Flow_1jfc869" sourceRef="Event_02b7o3f" targetRef="ServiceTask_1" />
+    <bpmn2:startEvent id="Event_02b7o3f">
+      <bpmn2:outgoing>Flow_1jfc869</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="TimerEventDefinition_0ytumw2">
+        <bpmn2:timeCycle xsi:type="bpmn2:tFormalExpression">#{somebean.somemethod()}</bpmn2:timeCycle>
+      </bpmn2:timerEventDefinition>
+    </bpmn2:startEvent>
+    <bpmn2:userTask id="ServiceTask_1" name="Calculate&#10;&#10;Interest">
+      <bpmn2:incoming>Flow_1jfc869</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:userTask>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="loanApproval-new">
+      <bpmndi:BPMNEdge id="Flow_1jfc869_di" bpmnElement="Flow_1jfc869">
+        <di:waypoint x="198" y="122" />
+        <di:waypoint x="260" y="122" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="Activity_0vkv4nm_di" targetElement="_BPMNShape_EndEvent_3">
+        <di:waypoint x="360" y="122" />
+        <di:waypoint x="420" y="122" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_EndEvent_3" bpmnElement="EndEvent_1">
+        <dc:Bounds x="420" y="104" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="401" y="140" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vkv4nm_di" bpmnElement="ServiceTask_1">
+        <dc:Bounds x="260" y="82" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0tbujkz_di" bpmnElement="Event_02b7o3f">
+        <dc:Bounds x="162" y="104" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
